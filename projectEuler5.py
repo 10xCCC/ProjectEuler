@@ -1,32 +1,37 @@
-#started 6:25pm 12/31/17
+#started 12/31/17
 
 #2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
 #What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
+# first step - created function to check for any Non Divisors. Tested it with given numbers
+# doing a while loop with that would have taken too long
+
+# cancelled the While loop. solved it using some number theory. actual answer was 232792560
+
 def main():
 
-	x = 22
+	testSmallestNumber = 2521
+	totalDivisors = 20
 
-	
-	boolList = [False]
-	allTrue = all(x is True for x in boolList)
+	areNonDivisors = True
 
+	while areNonDivisors == True:
+		areNonDivisors = checkForAnyNonDivisors(testSmallestNumber,totalDivisors)
+		testSmallestNumber += 1
+		print testSmallestNumber
 
-	while allTrue == False:
-		y = range(1,21)
-		boolList = []
-		for a in y:
-			
-			if x%a != 0:
-				boolList.append(False)
-			else:
-				boolList.append(True)
-		allTrue = all(x is True for x in boolList)
+	print testSmallestNumber
 
-
-	print x
-
+def checkForAnyNonDivisors(x,y):
+	#returns True if any nonDivisors in intSmallNumber
+	# x is small number
+	# total divisors is y
+	for a in range(1, y+1):
+		b = x % a
+		if b != 0:
+			return True
+	return False
 
 
 main()
